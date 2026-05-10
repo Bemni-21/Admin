@@ -1,4 +1,4 @@
-const API_BASE_URL = "http://https://civic-backend-p2lp.onrender.com/api";
+const API_BASE_URL = "https://civic-backend-p2lp.onrender.com/api";
 
 export const authApi = {
   async signInWithEmail(email, password) {
