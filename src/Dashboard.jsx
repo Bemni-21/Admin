@@ -13,7 +13,7 @@ import AnalyticsComponent from "@/pages/Analytics";
 import UsersComponent from "@/pages/Users";
 import ForumsComponent from "@/pages/Forums";
 import ForumDetailView from "@/components/ForumDetailView";
-import PollsComponent from "@/pages/Polls";
+import PollsComponent from "@/pages/Polls.jsx";
 import BureauComponent from "@/pages/Bureau";
 import AgencySuperAdminComponent from "@/pages/AgencySuperAdmin";
 import SettingsComponent from "@/pages/Settings";
