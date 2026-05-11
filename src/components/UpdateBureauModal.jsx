@@ -175,7 +175,7 @@ export default function UpdateBureauModal({
                 onImageUploaded={handleImageUpload}
                 currentImageUrl={formData.icon_url}
                 onRemove={handleRemoveImage}
-                bucket="bureau-icons"
+                bucket="icons"
               />
             </div>
 
