@@ -22,6 +22,7 @@ import {
 import { Loader2, Plus, Trash2, X } from "lucide-react";
 
 // Validation schema for update poll
+// Validation schema for update poll
 const updatePollSchema = yup.object({
   title: yup
     .string()
@@ -31,13 +32,21 @@ const updatePollSchema = yup.object({
   description: yup.string().max(1000, "Description must be less than 1000 characters"),
   start_date: yup
     .string()
-    .required("Start date is required"),
+    .required("Start date is required")
+    .test("start-date-not-past", "Start date cannot be in the past", (value) => {
+      if (!value) return true;
+      return new Date(value) >= new Date();
+    }),
   end_date: yup
     .string()
     .required("End date is required")
     .test("end-date", "End date must be after start date", (value, context) => {
       if (!value || !context.parent.start_date) return true;
       return new Date(value) > new Date(context.parent.start_date);
+    })
+    .test("end-date-not-past", "End date cannot be in the past", (value) => {
+      if (!value) return true;
+      return new Date(value) >= new Date();
     }),
   options: yup
     .array()
@@ -48,7 +57,6 @@ const updatePollSchema = yup.object({
       return value.every(opt => opt.label && opt.label.trim().length > 0);
     }),
 });
-
 // Color options for poll options
 const COLOR_OPTIONS = [
   { value: "#3B82F6", label: "Blue" },
