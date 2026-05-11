@@ -72,13 +72,17 @@ const createPollSchema = yup.object({
       if (!value) return true;
       return new Date(value) >= new Date();
     }),
-  end_date: yup
-    .string()
-    .required("End date is required")
-    .test("end-date", "End date must be after start date", (value, context) => {
-      if (!value || !context.parent.start_date) return true;
-      return new Date(value) > new Date(context.parent.start_date);
-    }),
+end_date: yup
+  .string()
+  .required("End date is required")
+  .test("end-date", "End date must be after start date", (value, context) => {
+    if (!value || !context.parent.start_date) return true;
+    return new Date(value) > new Date(context.parent.start_date);
+  })
+  .test("end-date-not-past", "End date cannot be in the past", (value) => {
+    if (!value) return true;
+    return new Date(value) >= new Date();
+  }),
   options: yup
     .array()
     .min(2, "Poll must have at least 2 options")
