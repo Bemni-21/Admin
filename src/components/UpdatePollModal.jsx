@@ -472,7 +472,7 @@ export default function UpdatePollModal({
               <div>
                 <Label className="dark:text-gray-300">Genders</Label>
                 <div className="flex gap-4 mt-2">
-                  {['male', 'female', 'other'].map(gender => (
+                  {['male', 'female'].map(gender => (
                     <label key={gender} className="flex items-center gap-2 text-sm dark:text-gray-300">
                       <input
                         type="checkbox"
